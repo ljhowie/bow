@@ -1,0 +1,38 @@
+pre{
+  min-height: 50vh;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+mat-card{
+  margin: 0px 8px;
+  flex-grow: 1;
+  overflow-wrap: break-word;
+  width: 60vh;
+  height: 90vh;
+}
+
+mat-card-content {
+  overflow: auto;
+}
+
+mat-divider{
+  margin-top: 10px;
+}
+
+.container {
+  display: flex;
+}
+
+.card-title-spacer {
+  flex: 1 1 auto;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-filename {
+  margin-top: 15px;
+  margin-right: 7px;
+}

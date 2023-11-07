@@ -1,0 +1,57 @@
+# Deployment manifest for backend service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bow
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: bow
+    spec:
+      containers:
+      - name: bow
+        image: quay.io/ljhowie/bow:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: 200Mi
+            cpu: 10m
+          limits:
+            memory: 500Mi
+            cpu: 50m
+---
+# Deployment manifest for frontend service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bow-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bow-ui
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: bow-ui
+    spec:
+      containers:
+      - name: bow-ui
+        image: quay.io/ljhowie/bow-ui:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: 30Mi
+            cpu: 10m
+          limits:
+            memory: 100Mi
+            cpu: 50m

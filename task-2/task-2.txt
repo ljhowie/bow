@@ -1,0 +1,16 @@
+Backgroud:
+
+There is a dev k8s cluster used for all the development works and QA works.
+All of them used a tool called Garden (https://docs.garden.io/) in the dev cluster to deploy the entire application stack (a bunch of microservices), using a single command, into their own namespace.
+Let's call that namespace Dev.
+The Dev namespace will be automatically cleaned up after 7 days of idle time (e.g. without new deployments), and this is a feature provided by Garden.
+We hav more similar types of namespaces like Preview and CI that will be cleaned up after hours/ days of idle time.
+ 
+Problem:
+
+We realize there are some Dev namespaces not removed after 7 days, which clearly tell us that the cleanup mechanism provided by Garden wasn't 100% working.
+As we use EKS, dangling unused workloads means additional cost charged to our organisation that could be avoided.
+
+Solution:
+Although not perfect, we have decided to implement extra CronJob (Kubernetes workload) that run at a specific time daily to complement the cleanup tasks.
+We write bash script that will only perform a "kubectl delete ns xxx" after n+1 day (where n is the configured idle time to cleanup the namespace), and we wrap it up in images, run it in the cluster as CronJob.

@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+.dockerignore
+
+# angular
+node_modules/
+dist/
+.angular/
+
+# vscode
+.vscode
+.editorconfig
+
+# Docs
+**/*.md

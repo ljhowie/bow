@@ -1,0 +1,25 @@
+# Service manifest for backend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: bow
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app.kubernetes.io/name: bow
+---
+# Service manifest for frontend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: bow-ui
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app.kubernetes.io/name: bow-ui

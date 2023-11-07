@@ -1,0 +1,17 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+
+# Virtual environment
+venv/
+
+# Docs
+**/*.md

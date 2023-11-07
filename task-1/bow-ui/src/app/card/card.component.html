@@ -1,0 +1,40 @@
+<div class="container">
+
+  <mat-card>
+
+    <mat-card-header>
+      <mat-card-title>Original text</mat-card-title>
+      <span class="card-title-spacer"></span>
+      <input type="file" class="file-input" accept="text/plain,.txt" (change)="onFileSelected($event)" #fileUpload>
+      <span class="upload-filename">{{request.name || "No file uploaded."}}</span>
+      <button mat-mini-fab matTooltip="Upload text file" color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <mat-icon>upload</mat-icon>
+      </button>
+
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <pre class="output-text">{{request.content}}</pre>
+    </mat-card-content>
+
+  </mat-card>
+  
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Result</mat-card-title>
+      <span class="card-title-spacer"></span>
+      <button mat-mini-fab matTooltip="Results generated using CountVectorizer." color="accent">
+        <mat-icon>info</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <pre class="output-result">{{result}}</pre>
+    </mat-card-content>
+  </mat-card>
+
+</div>
